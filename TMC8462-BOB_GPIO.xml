@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<EtherCATInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="EtherCATInfo.xsd" Version="1.6">
+  <Vendor>
+    <Id>#x286</Id>
+    <Name>Trinamic Motion Control GmbH &amp; Co. KG</Name>
+    <ImageData16x14>424dd6020000000000003600000028000000100000000e0000000100180000000000a0020000130b0000130b00000000000000000000080808525252585858585858585858585858585858585858585858585858585858585858585858585858515151080808757575ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff757575808080ffffffcfcfcfa8a8abc7c7cdffffffffffffffffffffffffffffffffffffb8bcbc8d8e8eadadadffffff7f7f7f808080fcfcfccacacce8e8f2bebe9fd2d2c0dadacfddddd8dddfd7dbc1d0cba4b7a48c94e2e6ea929293dddddd7f7f7f808080ffffffaaaaacd6d6bab3b3729797455a5a005a5a005a5d005c5700986545b99b7dc7cec1b1b1b2f1f1f17f7f7f808080ffffffdddde0e1e1f4757500959541d5d5c1aaaa65b1b26ad6dad581892885610ad8dce9d6d6d7ffffff7f7f7f808080fffffffffffffffffffbfbfe595900666600b3b38aabab81686800585a00fbfdfcffffffffffffffffff7f7f7f808080ffffffffffffffffffffffffb5b58c5f5f00b9b969919140636300cacaa1ffffffffffffffffffffffff7f7f7f808080ffffffffffffffffffffffffffffff696900b1b1598989306e6e08ffffffffffffffffffffffffffffff7f7f7f808080ffffffffffffffffffffffffffffffececefa5a53b7d7d12f0f0f4ffffffffffffffffffffffffffffff7f7f7f808080ffffffffffffffffffffffffffffffaeaebad7d7c5d0d0beb1b1bdffffffffffffffffffffffffffffff7f7f7f808080ffffffffffffffffffffffffffffffaeaeb0d5d5d9cacaceafafb1ffffffffffffffffffffffffffffff7f7f7f787878fffffffffffffffffffffffffffffffffffff5f5f5f5f5f5ffffffffffffffffffffffffffffffffffff7878781d1d1dadadadb3b3b3b3b3b3b3b3b3b3b3b3b3b3b3b3b3b3b3b3b3b3b3b3b3b3b3b3b3b3b3b3b3b3b3b3acacac1c1c1c</ImageData16x14>
+  </Vendor>
+  <Descriptions>
+    <Groups>
+      <Group>
+        <Type>TrinamicEVAL</Type>
+        <Name LcId="1033">EVAL boards</Name>
+        <Name LcId="1031">EVAL boards</Name>
+      </Group>
+    </Groups>
+    <Devices>
+      <Device Physics="YY">
+        <Type ProductCode="#x26483053" RevisionNo="#x0001012B">TMC8462-BOB Default</Type>
+        <Name LcId="1033">TMC8462-BOB Default</Name>
+        <Name LcId="1031">TMC8462-BOB Default</Name>
+        <Info>
+          <StateMachine>
+            <Timeout>
+              <PreopTimeout>2000</PreopTimeout>
+              <SafeopOpTimeout>9000</SafeopOpTimeout>
+              <BackToInitTimeout>5000</BackToInitTimeout>
+              <BackToSafeopTimeout>200</BackToSafeopTimeout>
+            </Timeout>
+          </StateMachine>
+          <Mailbox>
+            <Timeout>
+              <RequestTimeout>100</RequestTimeout>
+              <ResponseTimeout>2000</ResponseTimeout>
+            </Timeout>
+          </Mailbox>
+        </Info>
+        <GroupType>TrinamicEVAL</GroupType>
+        <Fmmu Sm="0">Outputs</Fmmu>
+        <Fmmu Sm="1">Inputs</Fmmu>
+        <Sm DefaultSize="8" StartAddress="#x1000" ControlByte="#x24" Enable="1">Outputs</Sm>
+        <Sm DefaultSize="8" StartAddress="#x1100" ControlByte="#x20" Enable="1">Inputs</Sm>
+        <Dc>
+          <OpMode>
+            <Name>Synchron</Name>
+            <Desc>FreeRun/SM-Synchron</Desc>
+            <AssignActivate>#x0</AssignActivate>
+          </OpMode>
+          <OpMode>
+            <Name>DC</Name>
+            <Desc>DC-Synchron</Desc>
+            <AssignActivate>#x300</AssignActivate>
+            <CycleTimeSync0 Factor="1">0</CycleTimeSync0>
+            <ShiftTimeSync0>0</ShiftTimeSync0>
+            <CycleTimeSync1 Factor="1">0</CycleTimeSync1>
+            <ShiftTimeSync1>0</ShiftTimeSync1>
+          </OpMode>
+        </Dc>
+        <RxPdo Fixed="1" Mandatory="1" Sm="0">
+          <Index>#x1600</Index>
+          <Name>Outputs</Name>
+          <Entry>
+            <Index>7000</Index>
+            <SubIndex>0</SubIndex>
+            <BitLen>32</BitLen>
+            <Name>GPO</Name>
+            <DataType>UDINT</DataType>
+          </Entry>
+          <Entry>
+            <Index>7001</Index>
+            <SubIndex>0</SubIndex>
+            <BitLen>16</BitLen>
+            <Name>GPIO_CONFIG</Name>
+            <DataType>UINT</DataType>
+          </Entry>
+        </RxPdo>
+        <TxPdo Fixed="1" Mandatory="1" Sm="1">
+          <Index>#x1A00</Index>
+          <Name>Inputs</Name>
+          <Entry>
+            <Index>6003</Index>
+            <SubIndex>1</SubIndex>
+            <BitLen>16</BitLen>
+            <Name>GPI</Name>
+            <DataType>UINT</DataType>
+          </Entry>
+        </TxPdo>
+        <Eeprom>
+          <ByteSize>2048</ByteSize>
+          <ConfigData>050F034EC40900000000</ConfigData>
+          <!-- Category 1 data is required for MFC IO configuration parameter loading from memory area 0x0580:0x05FF (ESC Parameter RAM) -->
+          <Category>
+            <CatNo>1</CatNo>
+            <!--  ^LVIO                           ^HVIO           ^HVCONF     ^A0 ^A1 ^ENC        ^SPI        ^I2C        ^StepDir                            ^PWM                  ^GPIO ^D^IRQ^WD         ^H^xxxxx^S -->
+            <Data>37280000000000000000000000000000000000000000000000000000000000100011000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000016161600000000000000000000</Data>
+          </Category>
+        </Eeprom>
+        <ImageData16x14>424dd6020000000000003600000028000000100000000e0000000100180000000000a0020000130b0000130b00000000000000000000080808525252585858585858585858585858585858585858585858585858585858585858585858585858515151080808757575ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff757575808080ffffffcfcfcfa8a8abc7c7cdffffffffffffffffffffffffffffffffffffb8bcbc8d8e8eadadadffffff7f7f7f808080fcfcfccacacce8e8f2bebe9fd2d2c0dadacfddddd8dddfd7dbc1d0cba4b7a48c94e2e6ea929293dddddd7f7f7f808080ffffffaaaaacd6d6bab3b3729797455a5a005a5a005a5d005c5700986545b99b7dc7cec1b1b1b2f1f1f17f7f7f808080ffffffdddde0e1e1f4757500959541d5d5c1aaaa65b1b26ad6dad581892885610ad8dce9d6d6d7ffffff7f7f7f808080fffffffffffffffffffbfbfe595900666600b3b38aabab81686800585a00fbfdfcffffffffffffffffff7f7f7f808080ffffffffffffffffffffffffb5b58c5f5f00b9b969919140636300cacaa1ffffffffffffffffffffffff7f7f7f808080ffffffffffffffffffffffffffffff696900b1b1598989306e6e08ffffffffffffffffffffffffffffff7f7f7f808080ffffffffffffffffffffffffffffffececefa5a53b7d7d12f0f0f4ffffffffffffffffffffffffffffff7f7f7f808080ffffffffffffffffffffffffffffffaeaebad7d7c5d0d0beb1b1bdffffffffffffffffffffffffffffff7f7f7f808080ffffffffffffffffffffffffffffffaeaeb0d5d5d9cacaceafafb1ffffffffffffffffffffffffffffff7f7f7f787878fffffffffffffffffffffffffffffffffffff5f5f5f5f5f5ffffffffffffffffffffffffffffffffffff7878781d1d1dadadadb3b3b3b3b3b3b3b3b3b3b3b3b3b3b3b3b3b3b3b3b3b3b3b3b3b3b3b3b3b3b3b3b3b3b3b3acacac1c1c1c</ImageData16x14>
+      </Device>
+    </Devices>
+  </Descriptions>
+</EtherCATInfo>
